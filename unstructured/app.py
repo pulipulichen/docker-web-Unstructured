@@ -30,23 +30,30 @@ async def process_md(
 
     file_ext, file_path = save_upload_file(file)
 
-    file_path = check_convert(file_path)
-    if file_path is False:
-        return JSONResponse(content="")
-
     chunk_config = parse_json(chunk_config)
     chunk_config["ENABLE_CHUNK"] = False
+
+
 
     cache = cache_get(chunk_config, file_path)
     if cache is not None:
         os.remove(file_path)
         return JSONResponse(content=cache)
 
+
+    file_path = check_convert(file_path)
+    if file_path is False:
+        return JSONResponse(content="")
+    
+    if file_ext == '.plist':
+        # 開啟 file_path 檔案，然後回傳檔案內容
+        with open(file_path, "rb") as f:
+            return JSONResponse(content=f.read())
+
     # =================================================================
 
     # https://docs.unstructured.io/open-source/core-functionality/partitioning#partition
     # file_ext, file_path = save_upload_file(file)
-    file_ext = os.path.splitext(file_path)[1].lower()  # 取得副檔名
 
     print('Unstructure receive file: ', file_path, file_ext)
 
