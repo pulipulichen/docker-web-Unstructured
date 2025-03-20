@@ -11,7 +11,8 @@ def check_convert(file_path):
     try:
         response = requests.post(converter_url, data={"file_path": file_path}) # 發送 POST 請求，將 file_path 作為 data 傳送
         response.raise_for_status()  # 如果回覆狀態碼不是 200，就拋出異常
-        convert_file_path = response.text # 回傳回覆的文字內容
+        convert_file_path = response.json() # 回傳回覆的文字內容
+        print(convert_file_path)
 
         if file_path != convert_file_path:
             os.remove(file_path)

@@ -30,5 +30,5 @@ def convert_file(file_path):
     need_convert = True
     subprocess.run(command, check=True)
 
-  return output_file_path, need_convert
+  return output_file_path
   
