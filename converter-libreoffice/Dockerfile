@@ -11,7 +11,7 @@ RUN apt-get install -y libreoffice
 ENV UVICORN_WORKERS=1
 
 # 複製需求檔案並安裝
-COPY converter-libreoffice/requirements.txt .
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # =================================================================
@@ -19,5 +19,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # =================================================================
 
 # 啟動 FastAPI 伺服器
-COPY converter-libreoffice/entrypoint.sh /app/entrypoint.sh
+COPY entrypoint.sh /app/entrypoint.sh
 CMD ["bash", "/app/entrypoint.sh"]
