@@ -12,6 +12,7 @@ services:
     volumes:
       - uploads_data:/uploads
       - ./converter-libreoffice/app.py:/app/app.py
+      - ./converter-libreoffice/lib:/app/lib
 
   unstructured:
     build: 
