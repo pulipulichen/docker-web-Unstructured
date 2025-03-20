@@ -14,8 +14,8 @@ def check_convert(file_path):
         convert_file_path = response.json() # 回傳回覆的文字內容
         print(convert_file_path)
 
-        if file_path != convert_file_path:
-            os.remove(file_path)
+        # if file_path != convert_file_path:
+        #     os.remove(file_path)
 
         return convert_file_path 
     except requests.exceptions.RequestException as e:
