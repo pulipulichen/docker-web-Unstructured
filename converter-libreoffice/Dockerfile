@@ -13,6 +13,7 @@ ENV UVICORN_WORKERS=1
 # 複製需求檔案並安裝
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install python-multipart
 
 # =================================================================
 
