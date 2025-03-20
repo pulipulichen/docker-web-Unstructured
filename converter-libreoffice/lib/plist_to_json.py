@@ -13,6 +13,7 @@ def plist_to_json(plist_file_path):
     with open(plist_file_path, 'rb') as plist_file:
       plist_data = plistlib.load(plist_file) # 20250321-022020 從 plist 檔案讀取資料
       json_data = json.dumps(plist_data, indent=2) # 20250321-022020 將資料轉換為 JSON 格式
+      print(json_data)
 
     # 20250321-022147 取得檔案名稱和目錄
     file_name, file_ext = os.path.splitext(plist_file_path)
