@@ -18,4 +18,8 @@ ENV UVICORN_WORKERS=8
 COPY entrypoint.sh /app/entrypoint.sh
 CMD ["bash", "entrypoint.sh"]
 
+RUN mkdir -p /uploads/
+
 COPY app.py /app/app.py
+
+
