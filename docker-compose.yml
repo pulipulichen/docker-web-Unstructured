@@ -13,7 +13,6 @@ services:
       - uploads_data:/uploads
       - ./converter-libreoffice/app.py:/app/app.py
       - ./converter-libreoffice/lib:/app/lib
-      - ./converter-libreoffice/convert-pages-to-pdf.sh:/app/convert-pages-to-pdf.sh
 
   unstructured:
     build: 

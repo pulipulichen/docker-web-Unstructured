@@ -22,7 +22,7 @@ def convert_file(file_path):
     command = ["libreoffice", "--headless", "--convert-to", "pdf", file_path, "--outdir", dir_name]
     output_file_path = base_file_path + '.pdf'
   elif file_ext == '.pages':
-    command = ["/app/convert-pages-to-pdf.sh", file_path]
+    command = ["/app/lib/convert-pages-to-pdf.sh", file_path]
     output_file_path = base_file_path + '.pdf'
   elif file_ext in ['.emf', ".wmf"]:
     command = ["libreoffice", "--headless", "--convert-to", "png", file_path, "--outdir", dir_name]
@@ -34,8 +34,14 @@ def convert_file(file_path):
     try:
       subprocess.run(command, check=True)
     except subprocess.CalledProcessError:
-      print(f"Error converting file: {command}")
-      return False
+      if file_ext == '.pages':
+        command = ["/app/lib/convert-pages-to-thumbnail.sh", file_path]
+        output_file_path = base_file_path + '.jpg'
+      try:
+        subprocess.run(command, check=True)
+      except subprocess.CalledProcessError:
+        print(f"Error converting file: {command}")
+        return False
 
   return output_file_path
   
