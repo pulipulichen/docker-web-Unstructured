@@ -46,6 +46,7 @@ async def process_md(
 
     # https://docs.unstructured.io/open-source/core-functionality/partitioning#partition
     # file_ext, file_path = save_upload_file(file)
+    file_ext = os.path.splitext(file_path)[1].lower()  # 取得副檔名
 
     print('Unstructure receive file: ', file_path, file_ext)
 
