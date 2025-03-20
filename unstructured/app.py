@@ -31,6 +31,8 @@ async def process_md(
     file_ext, file_path = save_upload_file(file)
 
     file_path = check_convert(file_path)
+    if file_path is False:
+        return JSONResponse(content="")
 
     chunk_config = parse_json(chunk_config)
     chunk_config["ENABLE_CHUNK"] = False

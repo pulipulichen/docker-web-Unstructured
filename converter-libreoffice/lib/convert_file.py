@@ -31,7 +31,11 @@ def convert_file(file_path):
   if command is not None:
     print('converting file:', command)
     need_convert = True
-    subprocess.run(command, check=True)
+    try:
+      subprocess.run(command, check=True)
+    except subprocess.CalledProcessError:
+      print(f"Error converting file: {command}")
+      return False
 
   return output_file_path
   
