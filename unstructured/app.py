@@ -4,9 +4,8 @@ import os
 import uvicorn
 from starlette.responses import JSONResponse
 
-
+from lib.check_convert import check_convert
 from lib.elements_to_markdown import elements_to_markdown
-from lib.file_path_to_markdown import file_path_to_markdown
 
 from lib.save_upload_file import save_upload_file
 
@@ -31,11 +30,14 @@ async def process_md(
 
     file_ext, file_path = save_upload_file(file)
 
+    file_path = check_convert(file_path)
+
     chunk_config = parse_json(chunk_config)
     chunk_config["ENABLE_CHUNK"] = False
 
     cache = cache_get(chunk_config, file_path)
     if cache is not None:
+        os.remove(file_path)
         return JSONResponse(content=cache)
 
     # =================================================================
@@ -54,6 +56,8 @@ async def process_md(
     # output = {"status": "success", "documents": markdown_result, "metadatas": metadatas}
     output = "\n\n".join(markdown_result)
     cache_set(chunk_config, file_path, output)
+
+    os.remove(file_path)
 
     return JSONResponse(content=output)
 

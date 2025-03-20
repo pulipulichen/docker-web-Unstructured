@@ -2,7 +2,7 @@ import os
 import uuid
 
 # 設定上傳資料夾
-UPLOAD_FOLDER = "/tmp/uploads"
+UPLOAD_FOLDER = "/uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # 確保資料夾存在
 
 def save_upload_file(file):

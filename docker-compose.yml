@@ -2,6 +2,16 @@
 # version: "3"
 
 services:
+  converter_libreoffice:
+    build: 
+      context: converter-libreoffice
+    depends_on:
+      - redis
+    env_file:
+      - .env
+    volumes:
+      - uploads_data:/uploads
+
   unstructured:
     build: 
       context: unstructured
@@ -15,6 +25,7 @@ services:
       - ./unstructured/app.py:/app/app.py
       - ./unstructured/lib:/app/lib
       - ./unstructured/entrypoint.sh:/app/entrypoint.sh
+      - uploads_data:/uploads
 
   nginx:
     image: nginx:1.27.4-alpine3.21-perl
@@ -39,3 +50,4 @@ services:
 
 volumes:
   redis_data:
+  uploads_data:
