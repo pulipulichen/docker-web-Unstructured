@@ -1,6 +1,8 @@
 import os
 import subprocess
 
+from .plist_to_json import plist_to_json
+
 def convert_file(file_path):
   need_convert = False
   file_ext = os.path.splitext(file_path)[1].lower()  # 取得副檔名
@@ -27,6 +29,8 @@ def convert_file(file_path):
   elif file_ext in ['.emf', ".wmf"]:
     command = ["libreoffice", "--headless", "--convert-to", "png", file_path, "--outdir", dir_name]
     output_file_path = base_file_path + '.png'
+  elif file_ext == '.plist':
+    output_file_path = plist_to_json(output_file_path)
 
   if command is not None:
     print('converting file:', command)
