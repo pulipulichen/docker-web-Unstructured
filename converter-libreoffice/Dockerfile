@@ -15,7 +15,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install python-multipart
 RUN apt-get install -y unzip
-RUN pip install plistlib
+# RUN pip install plistlib
 
 # =================================================================
 
