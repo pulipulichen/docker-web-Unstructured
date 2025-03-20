@@ -21,6 +21,9 @@ def convert_file(file_path):
   elif file_ext == '.odg':
     command = ["libreoffice", "--headless", "--convert-to", "pdf", file_path, "--outdir", dir_name]
     output_file_path = base_file_path + '.pdf'
+  elif file_ext == '.pages':
+    command = ["/app/convert-pages-to-pdf.sh", file_path]
+    output_file_path = base_file_path + '.pdf'
   elif file_ext in ['.emf', ".wmf"]:
     command = ["libreoffice", "--headless", "--convert-to", "png", file_path, "--outdir", dir_name]
     output_file_path = base_file_path + '.png'
