@@ -1,0 +1,28 @@
+{
+  "name": "docker-clip-crawler",
+  "version": "1.0.0",
+  "description": "docker-clip-crawler",
+  "main": "index.js",
+  "scripts": {
+    "start": "docker-compose up",
+    "bash": "./bash-running.sh",
+    "up": "docker-compose up",
+    "down": "docker-compose down",
+    "down-rm-volume": "docker-compose down -v",
+    "build-up": "docker-compose up --build",
+    "lang": "docker-compose run app python3 /app/python/lang.py FFWryY3_Pc0",
+    "build": "docker-compose build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/democwise2016/docker-clip-crawler.git"
+  },
+  "keywords": [
+    "GitHub Action"
+  ],
+  "dependencies": {
+    "axios": "^1.8.1",
+    "cache-manager-sqlite": "0.2.0",
+    "html-to-docx": "1.8.0"
+  }
+}
