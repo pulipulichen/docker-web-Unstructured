@@ -21,7 +21,7 @@ CMD ["bash", "entrypoint.sh"]
 USER root
 RUN mkdir -p /uploads/
 RUN chmod 777 /uploads/
-USER notebook-user
+# USER notebook-user
 
 COPY app.py /app/app.py
 
