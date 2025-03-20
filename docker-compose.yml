@@ -11,6 +11,7 @@ services:
       - .env
     volumes:
       - uploads_data:/uploads
+      - ./converter-libreoffice/app.py:/app/app.py
 
   unstructured:
     build: 
