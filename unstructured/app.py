@@ -49,7 +49,8 @@ async def process_md(
     if file_ext == '.plist':
         # 開啟 file_path 檔案，然後回傳檔案內容
         with open(file_path, "rb") as f:
-            return JSONResponse(content=f.read())
+            content = f.read() # 20240321-104500
+            return JSONResponse(content=content) # 20240321-104500
 
     file_ext = os.path.splitext(file_path)[1].lower()  # 取得副檔名
     if file_ext in ['.csv', '.xml', '.md', '.txt']:
