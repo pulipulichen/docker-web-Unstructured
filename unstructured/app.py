@@ -49,18 +49,18 @@ async def process_md(
     if file_ext == '.plist':
         # 開啟 file_path 檔案，然後回傳檔案內容
         with open(file_path, "rb") as f:
-            content = f.read() # 20240321-104500
+            content = f.read().decode('utf-8') # 20240321-104500
             return JSONResponse(content=content) # 20240321-104500
 
     file_ext = os.path.splitext(file_path)[1].lower()  # 取得副檔名
     if file_ext in ['.csv', '.xml', '.md', '.txt']:
-        with open(file_path, "r") as f: # 20240321-104500
-            content = f.read() # 20240321-104500
+        with open(file_path, "rb") as f: # 20240321-104500
+            content = f.read().decode('utf-8') # 20240321-104500
             return JSONResponse(content=content) # 20240321-104500
     if file_ext == '.json': # 20240321-104500
         with open(file_path, "r") as f: # 20240321-104500
             try: # 20240321-104500
-                content = f.read() # 20240321-104500
+                content = f.read().decode('utf-8') # 20240321-104500
                 return JSONResponse(content=content) # 20240321-104500
             except json.JSONDecodeError as e: # 20240321-104500
                 raise HTTPException(status_code=400, detail=f"Invalid JSON file: {e}") # 20240321-104500
